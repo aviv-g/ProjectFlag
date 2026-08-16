@@ -8,14 +8,13 @@ GREEN = (0, 255, 0)
 ROW_NUM = 25
 COLUMN_NUM = 50
 
-
-
 SQUARE_SIZE = 16
 
 SOLDIER = "soldier"
 LANDMINE = "landmine"
 EMPTY = "empty"
 FLAG = "flag"
+BUSH = "bush"
 
 OPTIONS = [LANDMINE, EMPTY]
 options = OPTIONS.copy()
