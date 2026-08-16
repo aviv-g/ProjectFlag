@@ -1,9 +1,8 @@
 import consts
 import pygame
 import screen
-
-
-
+import soldier
+import game_field
 
 
 def user_events_mouse():
@@ -33,8 +32,9 @@ def main():
     while status:
         user_events_mouse()
         screen.create_field()
-        screen.soldier()
-        screen.place_landmine(50, 10)
+        game_field.clear_field()
+        screen.place_soldier(game_field.field)
+        screen.place_landmine(20, 30)
 
 
 
