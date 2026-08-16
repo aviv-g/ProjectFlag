@@ -4,6 +4,8 @@ import screen
 
 
 
+
+
 def user_events_mouse():
     global status
     for event in pygame.event.get():
@@ -30,6 +32,10 @@ def main():
 
     while status:
         user_events_mouse()
+        screen.create_field()
         screen.soldier()
+        screen.place_landmine(50, 10)
+
+
 
 main()
