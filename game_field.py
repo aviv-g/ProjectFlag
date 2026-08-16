@@ -43,7 +43,6 @@ def add_landmines(index_list):
                 field[random_index[0]][random_index[1] + i]["status"] = consts.LANDMINE
             landmine_count += 1
 
-
 clear_field()
 print(field)
 
