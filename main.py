@@ -3,10 +3,6 @@ import pygame
 import screen
 
 
-screen = pygame.display.set_mode((consts.WINDOW_HEIGHT, consts.WINDOW_WIDTH))
-screen.fill(consts.BLACK)
-
-
 
 def user_events_mouse():
     global status
@@ -34,6 +30,6 @@ def main():
 
     while status:
         user_events_mouse()
-        screen.soldier_draw()
+        screen.soldier()
 
 main()
