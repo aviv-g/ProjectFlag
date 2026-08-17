@@ -10,16 +10,18 @@ def user_events_mouse():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             status = False
+
+def user_events_keyboard():
+    for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                soldier.move_left()
-                #print("left")
+                print("left")
             if event.key == pygame.K_RIGHT:
-                soldier.move_right()
+                print("right")
             if event.key == pygame.K_UP:
-                soldier.move_up()
+                print("up")
             if event.key == pygame.K_DOWN:
-                soldier.move_down()
+                print("down")
             if event.key == pygame.K_RETURN:
                 print("enter")
 
@@ -34,11 +36,11 @@ def main():
 
     while status:
         user_events_mouse()
+        user_events_keyboard()
 
         #screen.create_field(landmine_list)
 
         screen.create_green_field(bush_list)
-
 
 
 
