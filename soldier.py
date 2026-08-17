@@ -28,7 +28,7 @@ def check_move(x, y):
         move_soldier(x,y)
         game_status = consts.GAME
 
-    return game_status
+    return game_status, (x, y)
 
 
 def left():

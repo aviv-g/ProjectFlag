@@ -7,8 +7,6 @@ import game_field
 status = True
 keypad = {"pressed": False, "key" : "none"}
 
-game_status = consts.GAME
-
 def user_events_mouse():
     global status
     global keypad
@@ -40,31 +38,39 @@ def main():
     bush_list = game_field.search_bushes(game_field.bush_field)
 
     while status:
-        user_events_mouse()
-        screen.create_green_field(bush_list,x,y)
-        #screen.start_message()
+        game_status = consts.GAME
+        while game_status == consts.GAME:
+            user_events_mouse()
+            screen.create_green_field(bush_list)
+            #screen.start_message()
 
-        if keypad["pressed"]:
-            if keypad["key"] == "left":
-                x,y = soldier.left()
+            if keypad["pressed"]:
+                if keypad["key"] == "left":
+                    game_status, location = soldier.left()
 
-            if keypad["key"] == "right":
-                x,y = soldier.right()
+                if keypad["key"] == "right":
+                    game_status, location = soldier.right()
 
-            if keypad["key"] == "up":
-                x,y = soldier.up()
+                if keypad["key"] == "up":
+                    game_status, location = soldier.up()
 
-            if keypad["key"] == "down":
-                x,y = soldier.down()
+                if keypad["key"] == "down":
+                    game_status, location = soldier.down()
 
-            if keypad["key"] == "enter":
-                screen.create_field(landmine_list)
-                pygame.time.delay(1000)
+                if keypad["key"] == "enter":
+                    screen.create_field(landmine_list)
+                    pygame.time.delay(1000)
 
-            keypad["pressed"] = False
-            keypad["key"] = "none"
+                keypad["pressed"] = False
+                keypad["key"] = "none"
 
-        screen.create_green_field(bush_list, x,y)
+
+        if game_status == consts.WIN:
+            print("Win")
+        else:
+            print("Lose")
+
+        #screen.create_green_field(bush_list)
 
 
 main()
