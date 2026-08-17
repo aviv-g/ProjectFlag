@@ -34,12 +34,11 @@ def main():
 
     while status:
         user_events_mouse()
-
         screen.create_green_field(bush_list)
 
         if user_events_mouse() == "enter":
             screen.create_field(landmine_list)
-            pygame.time.delay(5000)
+            pygame.time.delay(1000)
 
 
 

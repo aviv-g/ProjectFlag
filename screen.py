@@ -11,6 +11,7 @@ def soldier(x,y):
     image = pygame.image.load("soldier.png").convert_alpha()
     soldier = pygame.transform.scale(image, (consts.SQUARE_SIZE * 4, consts.SQUARE_SIZE * 4))
     screen.blit(soldier, (x * consts.SQUARE_SIZE, y * consts.SQUARE_SIZE))
+    pygame.display.update()
 
 
 def soldier_night(x, y):
@@ -57,7 +58,7 @@ def place_bush(bush_list):
 
     for i in range(len(bush_list)):
         screen.blit(bush, (bush_list[i][0] * consts.SQUARE_SIZE, bush_list[i][1] * consts.SQUARE_SIZE))
-    pygame.display.update()
+    #pygame.display.update()
 
 
 def place_flag():
@@ -75,9 +76,9 @@ def place_flag():
 def create_green_field(bush_list):
     screen.fill(consts.GRASS_GREEN)
 
-    soldier(0, 0)
-    place_flag()
     place_bush(bush_list)
+    place_flag()
+    soldier(0, 0)
 
     pygame.display.flip()
 
