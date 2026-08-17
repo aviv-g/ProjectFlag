@@ -15,17 +15,20 @@ def user_events_mouse():
                 move = "left"
                 return move
             if event.key == pygame.K_RIGHT:
-                print("right")
+                move = "right"
+                return move
             if event.key == pygame.K_UP:
-                print("up")
+                move = "up"
+                return move
             if event.key == pygame.K_DOWN:
-                print("down")
+                move = "down"
+                return move
             if event.key == pygame.K_RETURN:
                 move = "enter"
                 return move
 
 status = True
-
+game_status = consts.GAME
 
 def main():
     pygame.init()
@@ -36,6 +39,18 @@ def main():
         user_events_mouse()
 
         screen.create_green_field(bush_list)
+        if  user_events_mouse() == "left":
+            print(soldier.move_left())
+
+
+        if user_events_mouse() == "right":
+            print(soldier.move_right())
+
+        if user_events_mouse() == "up":
+            print(soldier.move_up())
+
+        if user_events_mouse() == "down":
+            print(soldier.move_down())
 
         if user_events_mouse() == "enter":
             screen.create_field(landmine_list)

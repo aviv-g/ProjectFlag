@@ -2,6 +2,8 @@ import pygame
 import consts
 import screen
 import game_field
+from main import game_status
+
 
 """def soldier(x,y):
     image = pygame.image.load("soldier.png").convert_alpha()
@@ -93,10 +95,10 @@ def check_move(x, y):
     flag = check_flag(x, y)
 
     if landmine:
-        return "lose"
+        game_status = consts.LOSE
 
     elif flag:
-        return "win"
+        game_status = consts.WIN
 
     else:
         move_soldier(x,y)
