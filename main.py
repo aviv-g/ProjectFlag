@@ -42,38 +42,27 @@ def main():
     while status:
         user_events_mouse()
         screen.create_green_field(bush_list)
+        #screen.start_message()
 
         if keypad["pressed"]:
             if keypad["key"] == "left":
-                print("left")
-                #x,y = soldier.move_left()
-
-                #print(x,y)
-                #print(soldier.check_move(x, y))
+                print(soldier.left())
 
             if keypad["key"] == "right":
-                print("right")
-                #x,y = soldier.move_right()
-                #print(x, y)
-                #print(soldier.check_move(x, y))
+                print(soldier.right())
 
             if keypad["key"] == "up":
-                print("up")
-                #x,y = soldier.move_up()
-                #print(x, y)
-                #print(soldier.check_move(x, y))
+                print(soldier.up())
 
             if keypad["key"] == "down":
-                print("down")
-                #x,y = soldier.move_down()
-                #print(x, y)
-                #print(soldier.check_move(x, y))
+                print(soldier.down())
 
             if keypad["key"] == "enter":
                 screen.create_field(landmine_list)
                 pygame.time.delay(1000)
 
             keypad["pressed"] = False
+            keypad["key"] = "none"
 
         #screen.create_green_field(bush_list)
 

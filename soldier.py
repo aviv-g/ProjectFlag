@@ -2,62 +2,81 @@ import pygame
 import consts
 import screen
 import game_field
-from main import game_status
 
 
 def find_soldier():
     field = game_field.field
-    for i in range (consts.ROW_NUM):
-        for j in range (consts.COLUMN_NUM):
+    for i in range (len(field)):
+        for j in range (len(field[i])):
             if field[i][j]["status"] == consts.SOLDIER:
-                x,y = j, i
                 game_field.field[i][j]["status"] = consts.EMPTY
-                return x,y
+                return j,i
+    return 0,0
 
 
-def move_left():
+def check_move(x, y):
+    landmine = check_landmine(x, y)
+    flag = check_flag(x, y)
+
+    if landmine:
+        game_status = consts.LOSE
+
+    elif flag:
+        game_status = consts.WIN
+
+    else:
+        move_soldier(x,y)
+        game_status = consts.GAME
+
+    return game_status
+
+
+def left():
     x,y = find_soldier()
-    x -= 1
+    x = x - 1
     print(x,y)
-    return(x, y)
+    return check_move(x, y)
 
 
 
-def move_right():
+def right():
     x,y = find_soldier()
     x += 1
     print(x, y)
-    return (x, y)
+    return check_move(x, y)
 
 
-def move_up():
+def up():
     x,y = find_soldier()
     y -= 1
     print(x, y)
-    return (x, y)
+    return check_move(x, y)
 
 
-def move_down():
+def down():
     x,y = find_soldier()
     y += 1
     print(x, y)
-    return (x, y)
+    return check_move(x, y)
 
 
 def check_landmine(x,y):
-    for i in range(consts.ROW_NUM):
-        for j in range(consts.COLUMN_NUM):
+    legs_index = [(y + 4, x), (y + 4, x + 1)]
+    for i in range(len(game_field.field)):
+        for j in range(len(game_field.field[i])):
             if game_field.field[i][j]["status"] == consts.LANDMINE:
-                if x ==j and y == i:
+                if (i, j) in legs_index:
                     return True #The soldier location is the same as the landmine location
     return False
 
 
 def check_flag(x, y):
-    for i in range(consts.ROW_NUM):
-        for j in range(consts.COLUMN_NUM):
+    body_index = [(y, x), (y, x + 1), (y + 1, x), (y + 1, x + 1)]
+    field = game_field.field
+    for i in range(len(field)):
+        for j in range(len(field[i])):
             if game_field.field[i][j]["status"] == consts.FLAG:
-                if x ==j and y == i:
+                if (i, j) in body_index:
                     return True #The soldier location is the same as the flag location
     return False
 
@@ -69,19 +88,7 @@ def move_soldier(x,y):
                 game_field.field[i][j]["status"] = consts.SOLDIER
 
 
-def check_move(x, y):
-    landmine = check_landmine(x, y)
-    flag = check_flag(x, y)
 
-    if landmine:
-        return "LOSE"
-
-    elif flag:
-        return "WIN"
-
-    else:
-        #move_soldier(x,y)
-        return "next"
 
 
 

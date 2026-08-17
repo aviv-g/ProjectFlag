@@ -7,6 +7,13 @@ screen = pygame.display.set_mode((consts.WINDOW_HEIGHT, consts.WINDOW_WIDTH))
 screen.fill(consts.BLACK)
 
 
+def start_message():
+    font = pygame.font.SysFont("Arial", 20)
+    text = font.render("Welcome to the flag game. \nHave fun!", True, consts.WHITE)
+    screen.blit(text, (100, 100))
+    pygame.display.update()
+
+
 def soldier(x,y):
     image = pygame.image.load("soldier.png").convert_alpha()
     soldier = pygame.transform.scale(image, (consts.SQUARE_SIZE * 4, consts.SQUARE_SIZE * 4))
@@ -25,7 +32,6 @@ def place_soldier(field):
         for j in range (consts.COLUMN_NUM):
             if field[i][j]["status"] == consts.SOLDIER:
                 soldier(i, j)
-    pygame.display.update()
 
 
 def place_landmine(landmine_list):
