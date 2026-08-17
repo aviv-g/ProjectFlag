@@ -39,7 +39,7 @@ def add_landmines(index_list):
     landmine_count = 0
     while landmine_count < 20:
         random_index = random.choice(index_list)
-        if (field[random_index[0]][random_index[1]]["status"] == consts.EMPTY) and (random_index[1] < consts.COLUMN_NUM - 3) and (random_index[0] > 3):
+        if (field[random_index[0]][random_index[1]]["status"] == consts.EMPTY) and (random_index[1] < consts.COLUMN_NUM - 3) and (random_index[0] > 4):
             for i in range(3):
                 field[random_index[0]][random_index[1] + i]["status"] = consts.LANDMINE
             landmine_count += 1
