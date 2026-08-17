@@ -45,16 +45,29 @@ def main():
 
         if keypad["pressed"]:
             if keypad["key"] == "left":
-                print(soldier.move_left())
+                print("left")
+                #x,y = soldier.move_left()
+
+                #print(x,y)
+                #print(soldier.check_move(x, y))
 
             if keypad["key"] == "right":
-                print(soldier.move_right())
+                print("right")
+                #x,y = soldier.move_right()
+                #print(x, y)
+                #print(soldier.check_move(x, y))
 
             if keypad["key"] == "up":
-                print(soldier.move_up())
+                print("up")
+                #x,y = soldier.move_up()
+                #print(x, y)
+                #print(soldier.check_move(x, y))
 
             if keypad["key"] == "down":
-                print(soldier.move_down())
+                print("down")
+                #x,y = soldier.move_down()
+                #print(x, y)
+                #print(soldier.check_move(x, y))
 
             if keypad["key"] == "enter":
                 screen.create_field(landmine_list)

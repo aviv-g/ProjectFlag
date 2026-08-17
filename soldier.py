@@ -19,7 +19,7 @@ def move_left():
     x,y = find_soldier()
     x -= 1
     print(x,y)
-    return check_move(x, y)
+    return(x, y)
 
 
 
@@ -27,21 +27,21 @@ def move_right():
     x,y = find_soldier()
     x += 1
     print(x, y)
-    return check_move(x, y)
+    return (x, y)
 
 
 def move_up():
     x,y = find_soldier()
     y -= 1
     print(x, y)
-    return check_move(x, y)
+    return (x, y)
 
 
 def move_down():
     x,y = find_soldier()
     y += 1
     print(x, y)
-    return check_move(x, y)
+    return (x, y)
 
 
 def check_landmine(x,y):
@@ -74,13 +74,13 @@ def check_move(x, y):
     flag = check_flag(x, y)
 
     if landmine:
-        game_status = consts.LOSE
+        return "LOSE"
 
     elif flag:
-        game_status = consts.WIN
+        return "WIN"
 
     else:
-        move_soldier(x,y)
+        #move_soldier(x,y)
         return "next"
 
 
