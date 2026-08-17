@@ -8,9 +8,24 @@ screen.fill(consts.BLACK)
 
 
 def start_message():
-    font = pygame.font.SysFont("Arial", 20)
+    font = pygame.font.SysFont("Arial", 15)
     text = font.render("Welcome to the flag game. \nHave fun!", True, consts.WHITE)
-    screen.blit(text, (100, 100))
+    screen.blit(text, (70, 10))
+
+
+def win_message():
+    font = pygame.font.SysFont("Arial", 30)
+    text = font.render("You Win!", True, consts.WHITE)
+    text_rect = text.get_rect(center=(consts.WINDOW_HEIGHT / 2, consts.WINDOW_WIDTH / 2))
+    screen.blit(text, text_rect)
+    pygame.display.update()
+
+
+def lose_message():
+    font = pygame.font.SysFont("Arial", 30)
+    text = font.render("You Lose!", True, consts.WHITE)
+    text_rect = text.get_rect(center=(consts.WINDOW_HEIGHT / 2, consts.WINDOW_WIDTH / 2))
+    screen.blit(text, text_rect)
     pygame.display.update()
 
 
@@ -86,7 +101,12 @@ def create_green_field(bush_list,location):
     screen.fill(consts.GRASS_GREEN)
     place_bush(bush_list)
     place_flag()
+
+    if location == (0, 0):
+        start_message()
+
     soldier(x, y)
+
 
     pygame.display.flip()
 

@@ -30,32 +30,50 @@ def check_move(x, y):
     return game_status, (x, y)
 
 
+def in_frame(x, y):
+    if (0 <= x <= 50 - 3) and (0 <= y <= 25 - 4):
+        return True
+    return False
+
 def left(location):
     x = location[0]
     y = location[1]
-    x = x - 1
+    x_new = x - 1
+
+    if in_frame(x_new, y):
+        return check_move(x_new, y)
     return check_move(x, y)
+
 
 
 
 def right(location):
     x = location[0]
     y = location[1]
-    x += 1
+    x_new = x + 1
+
+    if in_frame(x_new, y):
+        return check_move(x_new, y)
     return check_move(x, y)
 
 
 def up(location):
     x = location[0]
     y = location[1]
-    y -= 1
+    y_new = y - 1
+
+    if in_frame(x, y_new):
+        return check_move(x, y_new)
     return check_move(x, y)
 
 
 def down(location):
     x = location[0]
     y = location[1]
-    y += 1
+    y_new = y + 1
+
+    if in_frame(x, y_new):
+        return check_move(x, y_new)
     return check_move(x, y)
 
 

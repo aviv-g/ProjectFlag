@@ -100,10 +100,7 @@ def search_bushes(field):
 
 
 clear_field()
-print(field)
-
 grass_field()
-print(bush_field)
 
 
 

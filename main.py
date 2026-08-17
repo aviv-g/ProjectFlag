@@ -36,14 +36,14 @@ def main():
     pygame.init()
     landmine_list = game_field.search_landmine(game_field.field)
     bush_list = game_field.search_bushes(game_field.bush_field)
+    game_status = consts.GAME
     location = (0, 0)
 
     while status:
-        game_status = consts.GAME
         while game_status == consts.GAME:
             user_events_mouse()
-            #screen.start_message()
             screen.create_green_field(bush_list, location)
+
 
             if keypad["pressed"]:
                 if keypad["key"] == "left":
@@ -67,11 +67,9 @@ def main():
 
 
         if game_status == consts.WIN:
-            print("Win")
+            screen.win_message()
         else:
-            print("Lose")
-
-        #screen.create_green_field(bush_list)
+            screen.lose_message()
 
 
 main()
