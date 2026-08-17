@@ -47,24 +47,23 @@ def main():
 
             if keypad["pressed"]:
                 if keypad["key"] == "left":
-                    game_status, location = soldier.left()
+                    game_status, location = soldier.left(location)
 
                 if keypad["key"] == "right":
-                    game_status, location = soldier.right()
+                    game_status, location = soldier.right(location)
 
                 if keypad["key"] == "up":
-                    game_status, location = soldier.up()
+                    game_status, location = soldier.up(location)
 
                 if keypad["key"] == "down":
-                    game_status, location = soldier.down()
+                    game_status, location = soldier.down(location)
 
                 if keypad["key"] == "enter":
-                    location = tuple(soldier.find_soldier())
                     screen.create_field(landmine_list, location)
                     pygame.time.delay(1000)
 
-                keypad["pressed"] = False
-                keypad["key"] = "none"
+            keypad["pressed"] = False
+            keypad["key"] = "none"
 
         if game_status == consts.WIN:
             print("Win")

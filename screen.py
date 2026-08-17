@@ -83,8 +83,6 @@ def place_flag():
 def create_green_field(bush_list,location):
     x = location[0]
     y = location[1]
-    print(location)
-
     screen.fill(consts.GRASS_GREEN)
     place_bush(bush_list)
     place_flag()

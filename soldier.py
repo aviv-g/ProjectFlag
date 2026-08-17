@@ -11,7 +11,6 @@ def find_soldier():
             if field[i][j]["status"] == consts.SOLDIER:
                 game_field.field[i][j]["status"] = consts.EMPTY
                 return j,i
-    return 0,0
 
 
 def check_move(x, y):
@@ -31,32 +30,32 @@ def check_move(x, y):
     return game_status, (x, y)
 
 
-def left():
-    x,y = find_soldier()
+def left(location):
+    x = location[0]
+    y = location[1]
     x = x - 1
-    print(x,y)
     return check_move(x, y)
 
 
 
-def right():
-    x,y = find_soldier()
+def right(location):
+    x = location[0]
+    y = location[1]
     x += 1
-    print(x, y)
     return check_move(x, y)
 
 
-def up():
-    x,y = find_soldier()
+def up(location):
+    x = location[0]
+    y = location[1]
     y -= 1
-    print(x, y)
     return check_move(x, y)
 
 
-def down():
-    x,y = find_soldier()
+def down(location):
+    x = location[0]
+    y = location[1]
     y += 1
-    print(x, y)
     return check_move(x, y)
 
 
