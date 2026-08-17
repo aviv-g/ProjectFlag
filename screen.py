@@ -78,12 +78,12 @@ def place_flag():
 
 
 
-def create_green_field(bush_list):
+def create_green_field(bush_list,x=0, y=0):
     screen.fill(consts.GRASS_GREEN)
 
     place_bush(bush_list)
     place_flag()
-    soldier(0, 0)
+    soldier(x, y)
 
     pygame.display.flip()
 

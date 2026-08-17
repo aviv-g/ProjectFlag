@@ -41,21 +41,21 @@ def main():
 
     while status:
         user_events_mouse()
-        screen.create_green_field(bush_list)
+        screen.create_green_field(bush_list,x,y)
         #screen.start_message()
 
         if keypad["pressed"]:
             if keypad["key"] == "left":
-                print(soldier.left())
+                x,y = soldier.left()
 
             if keypad["key"] == "right":
-                print(soldier.right())
+                x,y = soldier.right()
 
             if keypad["key"] == "up":
-                print(soldier.up())
+                x,y = soldier.up()
 
             if keypad["key"] == "down":
-                print(soldier.down())
+                x,y = soldier.down()
 
             if keypad["key"] == "enter":
                 screen.create_field(landmine_list)
@@ -64,7 +64,7 @@ def main():
             keypad["pressed"] = False
             keypad["key"] = "none"
 
-        #screen.create_green_field(bush_list)
+        screen.create_green_field(bush_list, x,y)
 
 
 main()

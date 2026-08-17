@@ -96,3 +96,4 @@ def move_soldier(x,y):
 
 
 
+
