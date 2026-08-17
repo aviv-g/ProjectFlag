@@ -4,31 +4,35 @@ import screen
 import soldier
 import game_field
 
+status = True
+keypad = {"pressed": False, "key" : "none"}
+
+game_status = consts.GAME
 
 def user_events_mouse():
     global status
+    global keypad
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             status = False
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                move = "left"
-                return move
-            if event.key == pygame.K_RIGHT:
-                move = "right"
-                return move
-            if event.key == pygame.K_UP:
-                move = "up"
-                return move
-            if event.key == pygame.K_DOWN:
-                move = "down"
-                return move
-            if event.key == pygame.K_RETURN:
-                move = "enter"
-                return move
+            keypad["pressed"] = True
+            recognize_key(event)
 
-status = True
-game_status = consts.GAME
+
+def recognize_key(event):
+    global keypad
+    if event.key == pygame.K_LEFT:
+        keypad["key"] = "left"
+    if event.key == pygame.K_RIGHT:
+        keypad["key"] = "right"
+    if event.key == pygame.K_UP:
+        keypad["key"] = "up"
+    if event.key == pygame.K_DOWN:
+        keypad["key"] = "down"
+    if event.key == pygame.K_RETURN:
+        keypad["key"] = "enter"
+
 
 def main():
     pygame.init()
@@ -38,23 +42,27 @@ def main():
     while status:
         user_events_mouse()
         screen.create_green_field(bush_list)
-        if  user_events_mouse() == "left":
-            print(soldier.move_left())
 
+        if keypad["pressed"]:
+            if keypad["key"] == "left":
+                print(soldier.move_left())
 
-        if user_events_mouse() == "right":
-            print(soldier.move_right())
+            if keypad["key"] == "right":
+                print(soldier.move_right())
 
-        if user_events_mouse() == "up":
-            print(soldier.move_up())
+            if keypad["key"] == "up":
+                print(soldier.move_up())
 
-        if user_events_mouse() == "down":
-            print(soldier.move_down())
+            if keypad["key"] == "down":
+                print(soldier.move_down())
 
-        if user_events_mouse() == "enter":
-            screen.create_field(landmine_list)
-            pygame.time.delay(1000)
+            if keypad["key"] == "enter":
+                screen.create_field(landmine_list)
+                pygame.time.delay(1000)
 
+            keypad["pressed"] = False
+
+        #screen.create_green_field(bush_list)
 
 
 main()

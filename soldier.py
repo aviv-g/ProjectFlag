@@ -5,27 +5,6 @@ import game_field
 from main import game_status
 
 
-"""def soldier(x,y):
-    image = pygame.image.load("soldier.png").convert_alpha()
-    soldier = pygame.transform.scale(image, (100, 40))
-    screen.blit(soldier, (x*consts.SQUARE_SIZE, y*consts.SQUARE_SIZE))
-    pygame.display.update()
-
-def soldier_night():
-    image = pygame.image.load("soldier_nigth.png").convert_alpha()
-    soldier = pygame.transform.scale(image, (100, 40))
-    screen.blit(soldier, (0, 0))
-    pygame.display.update()
-
-
-
-def place_soldier(field):
-    for i in range (consts.ROW_NUM):
-        for j in range (consts.COLUMN_NUM):
-            if field[i][j]["status"] == consts.SOLDIER:
-                soldier(i, j)"""
-
-
 def find_soldier():
     field = game_field.field
     for i in range (consts.ROW_NUM):

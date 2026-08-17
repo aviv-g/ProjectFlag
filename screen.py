@@ -58,7 +58,6 @@ def place_bush(bush_list):
 
     for i in range(len(bush_list)):
         screen.blit(bush, (bush_list[i][0] * consts.SQUARE_SIZE, bush_list[i][1] * consts.SQUARE_SIZE))
-    #pygame.display.update()
 
 
 def place_flag():
