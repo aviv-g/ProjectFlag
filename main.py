@@ -12,13 +12,14 @@ def user_events_mouse():
             status = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                print("left")
+                soldier.move_left()
+                #print("left")
             if event.key == pygame.K_RIGHT:
-                print("right")
+                soldier.move_right()
             if event.key == pygame.K_UP:
-                print("up")
+                soldier.move_up()
             if event.key == pygame.K_DOWN:
-                print("down")
+                soldier.move_down()
             if event.key == pygame.K_RETURN:
                 print("enter")
 
@@ -34,7 +35,6 @@ def main():
     while status:
         user_events_mouse()
         screen.create_field(landmine_list)
-
 
 
 main()
