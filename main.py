@@ -65,6 +65,7 @@ def main():
             keypad["pressed"] = False
             keypad["key"] = "none"
 
+
         if game_status == consts.WIN:
             print("Win")
         else:
