@@ -29,8 +29,8 @@ def find_soldier():
     for i in range (consts.ROW_NUM):
         for j in range (consts.COLUMN_NUM):
             if field[i][j]["status"] == consts.SOLDIER:
-                soldier_location = (j, i)
-    return soldier_location
+                x, y = j, i
+    return x, y
 
 
 def move_left():

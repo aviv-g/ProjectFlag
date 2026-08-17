@@ -39,7 +39,7 @@ def add_landmines(index_list):
     landmine_count = 0
     while landmine_count < 20:
         random_index = random.choice(index_list)
-        if (field[random_index[0]][random_index[1]]["status"] == consts.EMPTY) and (random_index[1] < consts.COLUMN_NUM - 3) and (random_index[0] > 2):
+        if (field[random_index[0]][random_index[1]]["status"] == consts.EMPTY) and (random_index[1] < consts.COLUMN_NUM - 3) and (random_index[0] > 3):
             for i in range(3):
                 field[random_index[0]][random_index[1] + i]["status"] = consts.LANDMINE
             landmine_count += 1
@@ -87,6 +87,16 @@ def place_bush(row, column):
     if ((row,column) not in consts.FLAG_INDEX) and (bush_field[row][column]["status"] == consts.EMPTY) and (column < consts.COLUMN_NUM - 2):
         return True
     return False
+
+
+def search_bushes(field):
+    bushes = []
+    for i in range(len(field)):
+        for j in range(len(field[i])):
+            if field[i][j]["status"] == consts.BUSH:
+                bushes.append((field[i][j]["x"], field[i][j]["y"]))
+
+    return bushes
 
 
 clear_field()

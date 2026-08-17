@@ -1,6 +1,8 @@
 import consts
 import pygame
 
+import game_field
+
 screen = pygame.display.set_mode((consts.WINDOW_HEIGHT, consts.WINDOW_WIDTH))
 screen.fill(consts.BLACK)
 
@@ -22,6 +24,7 @@ def place_soldier(field):
         for j in range (consts.COLUMN_NUM):
             if field[i][j]["status"] == consts.SOLDIER:
                 soldier(i, j)
+    pygame.display.update()
 
 
 def place_landmine(landmine_list):
@@ -30,7 +33,7 @@ def place_landmine(landmine_list):
 
     for i in range(len(landmine_list)):
         screen.blit(landmine, (landmine_list[i][0] * consts.SQUARE_SIZE, landmine_list[i][1] * consts.SQUARE_SIZE))
-        pygame.display.update()
+    pygame.display.update()
 
 
 
@@ -46,6 +49,39 @@ def create_field(landmine_list):
     place_landmine(landmine_list)
 
     pygame.display.flip()
+
+
+def place_bush(bush_list):
+    image = pygame.image.load("grass.png").convert_alpha()
+    bush = pygame.transform.scale(image, (consts.SQUARE_SIZE * 3, consts.SQUARE_SIZE * 3))
+
+    for i in range(len(bush_list)):
+        screen.blit(bush, (bush_list[i][0] * consts.SQUARE_SIZE, bush_list[i][1] * consts.SQUARE_SIZE))
+    pygame.display.update()
+
+
+def place_flag():
+    image = pygame.image.load("flag.png").convert_alpha()
+    flag = pygame.transform.scale(image, (consts.SQUARE_SIZE * 4, consts.SQUARE_SIZE * 4))
+
+    flag_x = game_field.field[consts.FLAG_INDEX[0][0]][consts.FLAG_INDEX[0][1]]["x"]
+    flag_y = game_field.field[consts.FLAG_INDEX[0][0]][consts.FLAG_INDEX[0][1]]["y"]
+
+    screen.blit(flag, (flag_x * consts.SQUARE_SIZE, flag_y * consts.SQUARE_SIZE))
+
+
+
+
+def create_green_field(bush_list):
+    screen.fill(consts.GRASS_GREEN)
+
+    soldier(0, 0)
+    place_flag()
+    place_bush(bush_list)
+
+    pygame.display.flip()
+
+
 
 
 
