@@ -23,28 +23,39 @@ def place_soldier(field):
             if field[i][j]["status"] == consts.SOLDIER:
                 soldier(i, j)"""
 
-def find_soldier(field):
+
+def find_soldier():
+    field = game_field.field
     for i in range (consts.ROW_NUM):
         for j in range (consts.COLUMN_NUM):
             if field[i][j]["status"] == consts.SOLDIER:
                 soldier_location = (j, i)
     return soldier_location
 
-def move_left(soldier_location):
-    soldier_location[0] -= 1
-    return soldier_location
+
+def move_left():
+    location = find_soldier()
+    location[0] -= 1
+    return location
+
 
 def move_right(soldier_location):
-    soldier_location[0] += 1
-    return soldier_location
+    location = find_soldier()
+    location[0] += 1
+    return location
 
-def move_up(soldier_location):
-    soldier_location[1] -= 1
-    return soldier_location
 
-def move_down(soldier_location):
-    soldier_location[1] += 1
-    return soldier_location
+def move_up():
+    location = find_soldier()
+    location[1] -= 1
+    return location
+
+
+def move_down():
+    location = find_soldier()
+    location[1] += 1
+    return location
+
 
 def check_landmine(soldier_location):
     for i in range(consts.ROW_NUM):
@@ -54,6 +65,7 @@ def check_landmine(soldier_location):
                     return True #The soldier location is the same as the landmine location
     return False
 
+
 def check_flag(soldier_location):
     for i in range(consts.ROW_NUM):
         for j in range(consts.COLUMN_NUM):
@@ -61,6 +73,7 @@ def check_flag(soldier_location):
                 if soldier_location == (j, i):
                     return True #The soldier location is the same as the flag location
     return False
+
 
 def move_soldier(soldier_location):
     for i in range(consts.ROW_NUM):
