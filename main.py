@@ -27,14 +27,13 @@ status = True
 
 def main():
     pygame.init()
+    landmine_list = game_field.search_landmine(game_field.field)
+    print(landmine_list)
 
 
     while status:
         user_events_mouse()
-        screen.create_field()
-        game_field.clear_field()
-        screen.place_soldier(game_field.field)
-        screen.place_landmine(20, 30)
+        screen.create_field(landmine_list)
 
 
 

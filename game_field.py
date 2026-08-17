@@ -39,10 +39,24 @@ def add_landmines(index_list):
     landmine_count = 0
     while landmine_count < 20:
         random_index = random.choice(index_list)
-        if (field[random_index[0]][random_index[1]]["status"] == consts.EMPTY) and (random_index[1] < consts.COLUMN_NUM - 3):
+        if (field[random_index[0]][random_index[1]]["status"] == consts.EMPTY) and (random_index[1] < consts.COLUMN_NUM - 3) and (random_index[0] > 2):
             for i in range(3):
                 field[random_index[0]][random_index[1] + i]["status"] = consts.LANDMINE
             landmine_count += 1
+
+
+def search_landmine(field):
+    landmine_list = []
+    for i in range(len(field)):
+        for j in range(len(field[i])):
+            if field[i][j]["status"] == consts.LANDMINE:
+                landmine_list.append((field[i][j]["x"], field[i][j]["y"]))
+
+    first_landmine = []
+    for k in range(0, len(landmine_list), 3):
+        first_landmine.append(landmine_list[k])
+
+    return first_landmine
 
 
 def grass_field():
@@ -81,13 +95,6 @@ print(field)
 grass_field()
 print(bush_field)
 
-count = 0
-for i in range(consts.ROW_NUM):
-    for j in range(consts.COLUMN_NUM):
-        if bush_field[i][j]["status"] == consts.BUSH:
-            count += 1
-
-print(count)
 
 
 
