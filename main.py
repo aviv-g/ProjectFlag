@@ -36,13 +36,14 @@ def main():
     pygame.init()
     landmine_list = game_field.search_landmine(game_field.field)
     bush_list = game_field.search_bushes(game_field.bush_field)
+    location = (0, 0)
 
     while status:
         game_status = consts.GAME
         while game_status == consts.GAME:
             user_events_mouse()
-            screen.create_green_field(bush_list)
             #screen.start_message()
+            screen.create_green_field(bush_list, location)
 
             if keypad["pressed"]:
                 if keypad["key"] == "left":
@@ -58,12 +59,12 @@ def main():
                     game_status, location = soldier.down()
 
                 if keypad["key"] == "enter":
-                    screen.create_field(landmine_list)
+                    location = tuple(soldier.find_soldier())
+                    screen.create_field(landmine_list, location)
                     pygame.time.delay(1000)
 
                 keypad["pressed"] = False
                 keypad["key"] = "none"
-
 
         if game_status == consts.WIN:
             print("Win")

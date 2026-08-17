@@ -44,15 +44,17 @@ def place_landmine(landmine_list):
 
 
 
-def create_field(landmine_list):
+def create_field(landmine_list,location):
     screen.fill(consts.DARK_GREEN)
+    x_soldier = location[0]
+    y_soldier = location[1]
     for x in range(consts.SQUARE_SIZE, consts.WINDOW_WIDTH*2, consts.SQUARE_SIZE):
         pygame.draw.line(screen, consts.LINES_GREEN, (x, 0), (x, consts.WINDOW_HEIGHT))
 
     for y in range(consts.SQUARE_SIZE, consts.WINDOW_HEIGHT, consts.SQUARE_SIZE):
         pygame.draw.line(screen,consts.LINES_GREEN, (0, y), (consts.WINDOW_WIDTH*2, y))
 
-    soldier_night(0, 0)
+    soldier_night(x_soldier, y_soldier)
     place_landmine(landmine_list)
 
     pygame.display.flip()
@@ -78,9 +80,12 @@ def place_flag():
 
 
 
-def create_green_field(bush_list,x=0, y=0):
-    screen.fill(consts.GRASS_GREEN)
+def create_green_field(bush_list,location):
+    x = location[0]
+    y = location[1]
+    print(location)
 
+    screen.fill(consts.GRASS_GREEN)
     place_bush(bush_list)
     place_flag()
     soldier(x, y)
